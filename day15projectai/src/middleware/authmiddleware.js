@@ -5,7 +5,7 @@ async function authmiddleware(req,res,next) {
 
     if(!token){
         return res.status(401).json({
-            message: "Unauthorized"
+            message: "Unauthorized please login again "
         })
     }
 
@@ -14,7 +14,7 @@ async function authmiddleware(req,res,next) {
 
 
         const user = await usermodel.findOne({
-            _id: decoded._id
+            _id: decoded.id
         });
         req.user = user;
         next();
