@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     scrollToBottom();
-    let socketinstance = io("http://localhost:3000");
+    let socketinstance = io("https://jeeai-chatbot-hax6.onrender.com",{transports: ["websocket"]});
     setsocket(socketinstance)
 
     socketinstance.on("ai-message-response",(response)=>{
