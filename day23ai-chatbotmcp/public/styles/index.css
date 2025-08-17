@@ -255,6 +255,9 @@ body {
     outline: none;
     border-color: #10a37f;
 }
+.chat-container.chat-header.logout-button{
+    padding: 10px;
+}
 
 .message-input::placeholder {
     color: #8e8ea0;

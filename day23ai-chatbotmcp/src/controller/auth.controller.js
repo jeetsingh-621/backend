@@ -33,10 +33,7 @@ async function postregistercontroller(req,res){
         const token =  jwt.sign({id:user._id},process.env.JWT_SECRET);
 
     res.cookie('token',token);
-     return res.status(201).json({
-        message:"user registered successfully",
-        user:user
-     });
+     return res.status(201).redirect("/");
 }
 
 async function getlogincontroller(req,res) {
@@ -64,24 +61,21 @@ async function postlogincontroller(req,res) {
 
     res.cookie("token",token);
 
-    return res.status(200).json({
-        message:"user logged in successfully",
-        user:user,
-    })
+    return res.status(200).redirect("/")
     
 }
 
-async function getindexcontroller(req,res) {
-
-    res.render("Index")
-
+async function userlogoutcontroller(req,res) {
+    res.clearCookie("token");
+    return res.status(200).redirect("/login");
     
-};
+}
+
 
 module.exports = {
     getregistercontroller,
     postregistercontroller,
     getlogincontroller,
     postlogincontroller,
-    getindexcontroller
+    userlogoutcontroller
 }

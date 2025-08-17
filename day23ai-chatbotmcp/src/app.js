@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const authroute  = require("./routes/auth.route");
 const cookieparser = require("cookie-parser");
+const homeroute = require("../src/routes/Home.route");
 
 
 
@@ -15,6 +16,7 @@ app.use(cookieparser());
 
 
 app.use("/auth",authroute);
+app.use("/",homeroute);
 
 
 module.exports = app;
